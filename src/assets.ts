@@ -7,6 +7,7 @@ export const manifest: ResolverManifest = {
             assets:
             {
                 myModel: "b.glb",
+                fullscreen: "fullscreen.png",
 
             }
         }

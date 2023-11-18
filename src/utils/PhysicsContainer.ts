@@ -1,6 +1,7 @@
-import { Container, Point } from "pixi.js";
+import { Point } from "pixi.js";
+import { Container3D } from "pixi3d/pixi7";
 
-export class PhysicsContainer extends Container {
+export class PhysicsContainer extends Container3D {
 
     public speed: Point = new Point();
     public acceleration: Point = new Point();
