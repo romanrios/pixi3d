@@ -108,8 +108,6 @@ export class Manager {
     // This update will be called by a pixi ticker and tell the scene that a tick happened
     private static update(deltaFrame: number): void {
 
-        // PAUSE THE GAME!
-
         // Let the current scene know that we updated it...
         // Just for funzies, sanity check that it exists first.
 

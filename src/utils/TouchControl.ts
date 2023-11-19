@@ -83,18 +83,17 @@ export class TouchControl extends Container {
 
     public update(_deltaMS: number) {
 
-        if (this.goLeft) {
-            this.player.myMesh.x -= MySphere.MODEL_SPEED;
-        } else if (this.goRight) {
-            this.player.myMesh.x += MySphere.MODEL_SPEED;
-        }
+            if (this.goLeft) {
+                this.player.myMesh.x -= MySphere.MODEL_SPEED;
+            } else if (this.goRight) {
+                this.player.myMesh.x += MySphere.MODEL_SPEED;
+            }
 
-        if (this.goUp) {
-            this.player.myMesh.z -= MySphere.MODEL_SPEED;
-        } else if (this.goDown) {
-            this.player.myMesh.z += MySphere.MODEL_SPEED;
-        }
-
+            if (this.goUp) {
+                this.player.myMesh.z -= MySphere.MODEL_SPEED;
+            } else if (this.goDown) {
+                this.player.myMesh.z += MySphere.MODEL_SPEED;
+            }
 
     }
 

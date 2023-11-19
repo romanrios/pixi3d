@@ -25,17 +25,6 @@ export class Scene1 extends Container implements IScene {
     constructor() {
         super();
 
-        // Models
-        this.myModel = new MyModel();
-        this.myModel.x = 2;
-        this.myModel.z = -5;
-        this.addChild(this.myModel);
-
-        this.myModel2 = new MyModel();
-        this.myModel2.x = -9;
-        this.myModel2.z = -5;
-        this.addChild(this.myModel2);
-
         // Ground
         const ground = Mesh3D.createPlane();
         ground.y = -0.01;
@@ -60,12 +49,26 @@ export class Scene1 extends Container implements IScene {
         // Shadows
         let shadowCastingLight = new ShadowCastingLight(Manager.app.renderer as Renderer, dirLight, {
             shadowTextureSize: 512,
-            quality: ShadowQuality.high,
+            quality: ShadowQuality.medium,
 
         });
         shadowCastingLight.softness = 1;
-        shadowCastingLight.shadowArea = 22;
-        Manager.app.renderer.plugins.pipeline.enableShadows(ground, shadowCastingLight);
+        shadowCastingLight.shadowArea = 18;
+        const pipeline = Manager.app.renderer.plugins.pipeline;
+        pipeline.enableShadows(ground, shadowCastingLight);
+
+        // Models
+        this.myModel = new MyModel(shadowCastingLight);
+        this.myModel.x = 2;
+        this.myModel.z = -5;
+        this.addChild(this.myModel);
+
+        this.myModel2 = new MyModel(shadowCastingLight);
+        this.myModel2.x = -9;
+        this.myModel2.z = -5;
+        this.addChild(this.myModel2);
+
+
 
         // Player (Sphere)
         this.player = new MySphere();
@@ -109,7 +112,9 @@ export class Scene1 extends Container implements IScene {
 
         this.player.update(_deltaTime);
 
-        this.touchControl.update(_deltaTime);
+        if (isMobile.any) {
+            this.touchControl.update(_deltaTime);
+        };
 
         this.camera.angles.y = this.player.myMesh.x + 180;
 
