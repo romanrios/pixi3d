@@ -1,28 +1,34 @@
-import { Container, Renderer, Sprite } from "pixi.js";
+import { Container, Renderer, Sprite, isMobile } from "pixi.js";
 import { IScene } from "../utils/IScene";
-import { CameraOrbitControl, Light, LightType, LightingEnvironment, Mesh3D, ShadowCastingLight, ShadowQuality } from "pixi3d/pixi7";
 import { Manager } from "../utils/Manager";
 import { MyModel } from "../game/MyModel";
 import { MySphere } from "../game/MySphere";
 import { TouchControl } from "../utils/TouchControl";
+import {
+    CameraOrbitControl,
+    Light,
+    LightType,
+    LightingEnvironment,
+    Mesh3D,
+    ShadowCastingLight,
+    ShadowQuality
+} from "pixi3d/pixi7";
 
 export class Scene1 extends Container implements IScene {
 
     public player: MySphere;
-
     private camera: CameraOrbitControl;
     private myModel: MyModel;
     private myModel2: MyModel;
-    touchControl: TouchControl;
+    private touchControl: any;
 
     constructor() {
         super();
 
-        // Model
+        // Models
         this.myModel = new MyModel();
         this.myModel.x = 2;
         this.myModel.z = -5;
-
         this.addChild(this.myModel);
 
         this.myModel2 = new MyModel();
@@ -51,11 +57,6 @@ export class Scene1 extends Container implements IScene {
         pointLight.position.set(0, 2, 0);
         LightingEnvironment.main.lights.push(pointLight);
 
-
-
-
-
-
         // Shadows
         let shadowCastingLight = new ShadowCastingLight(Manager.app.renderer as Renderer, dirLight, {
             shadowTextureSize: 512,
@@ -64,12 +65,9 @@ export class Scene1 extends Container implements IScene {
         });
         shadowCastingLight.softness = 1;
         shadowCastingLight.shadowArea = 22;
-
         Manager.app.renderer.plugins.pipeline.enableShadows(ground, shadowCastingLight);
 
-
-
-        // Sphere
+        // Player (Sphere)
         this.player = new MySphere();
         this.addChild(this.player);
 
@@ -80,10 +78,10 @@ export class Scene1 extends Container implements IScene {
         this.camera.distance = 6;
 
         // Touch Control
-        // if (isMobile.any) {
-        this.touchControl = new TouchControl(this.player);
-        this.addChild(this.touchControl);
-        // }
+        if (isMobile.any) {
+            this.touchControl = new TouchControl(this.player);
+            this.addChild(this.touchControl);
+        }
 
 
         const fullscreen = Sprite.from("fullscreen.png");
@@ -115,11 +113,7 @@ export class Scene1 extends Container implements IScene {
 
         this.camera.angles.y = this.player.myMesh.x + 180;
 
-
         this.camera.distance = (this.player.myMesh.z + 6);
-
-
-
 
     }
 

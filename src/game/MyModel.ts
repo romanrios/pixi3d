@@ -19,23 +19,15 @@ export class MyModel extends PhysicsContainer implements IHitbox {
         this.myModel = Model.from(myModelAsset);
         this.container.addChild(this.myModel);
 
-
-
         Manager.app.renderer.plugins.pipeline.enableShadows(this.myModel)
 
     }
-
-
 
     getHitbox(): Rectangle {
         return this.getBounds()
     }
 
-
-
-
     public override update(_deltaMS: number) {
-
     }
 
 }
