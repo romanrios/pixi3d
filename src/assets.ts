@@ -8,7 +8,7 @@ export const manifest: ResolverManifest = {
             {
                 myModel: "b.glb",
                 fullscreen: "fullscreen.png",
-                scene: "scene.gltf"
+                // scene: "scene.gltf"
 
             }
         }
