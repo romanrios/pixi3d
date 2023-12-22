@@ -116,7 +116,7 @@ export class Scene1 extends Container implements IScene {
             this.touchControl.update(_deltaTime);
         };
 
-        this.camera.angles.y = this.player.myMesh.x + 180;
+        this.camera.angles.y = -this.player.myMesh.x + 180;
 
         this.camera.distance = (this.player.myMesh.z + 6);
 
