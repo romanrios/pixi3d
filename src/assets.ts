@@ -6,9 +6,12 @@ export const manifest: ResolverManifest = {
             name: "mainScene",
             assets:
             {
-                myModel: "b.glb",
+                // treeModel: "treeModel.glb",
                 fullscreen: "fullscreen.png",
-                // scene: "scene.gltf"
+
+                sceneModel: "sceneModel.gltf",
+
+                // bridgeModel: "bridgeModel.glb"
 
             }
         }

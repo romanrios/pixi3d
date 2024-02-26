@@ -1,9 +1,9 @@
 import { Container, Graphics } from "pixi.js";
-import { MySphere } from "../game/MySphere";
+import { SphereMesh } from "../game/SphereMesh";
 
 
 export class TouchControl extends Container {
-    public player: MySphere;
+    public player: SphereMesh;
 
     private upButton: Graphics;
     private rightButton: Graphics;
@@ -12,7 +12,7 @@ export class TouchControl extends Container {
     jumpButton: Graphics;
 
 
-    constructor(player: MySphere) {
+    constructor(player: SphereMesh) {
         super()
 
         this.player = player;
@@ -84,15 +84,15 @@ export class TouchControl extends Container {
     public update(_deltaMS: number) {
 
             if (this.goLeft) {
-                this.player.myMesh.x -= MySphere.MODEL_SPEED;
+                this.player.myMesh.x -= SphereMesh.MODEL_SPEED;
             } else if (this.goRight) {
-                this.player.myMesh.x += MySphere.MODEL_SPEED;
+                this.player.myMesh.x += SphereMesh.MODEL_SPEED;
             }
 
             if (this.goUp) {
-                this.player.myMesh.z -= MySphere.MODEL_SPEED;
+                this.player.myMesh.z -= SphereMesh.MODEL_SPEED;
             } else if (this.goDown) {
-                this.player.myMesh.z += MySphere.MODEL_SPEED;
+                this.player.myMesh.z += SphereMesh.MODEL_SPEED;
             }
 
     }

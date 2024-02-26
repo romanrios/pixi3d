@@ -4,7 +4,7 @@ import { Container3D, Model, ShadowCastingLight } from "pixi3d/pixi7";
 import { PhysicsContainer } from "../utils/PhysicsContainer";
 import { Manager } from "../utils/Manager";
 
-export class MyModel extends PhysicsContainer implements IHitbox {
+export class TreeModel extends PhysicsContainer implements IHitbox {
     private myModel: Model;
     private container: Container3D;
 
@@ -15,7 +15,7 @@ export class MyModel extends PhysicsContainer implements IHitbox {
         this.scale.set(1.5);
         this.addChild(this.container)
 
-        const myModelAsset = Assets.get("myModel");
+        const myModelAsset = Assets.get("treeModel");
         this.myModel = Model.from(myModelAsset);
         this.container.addChild(this.myModel);
 

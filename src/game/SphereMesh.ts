@@ -6,7 +6,7 @@ import { PhysicsContainer } from "../utils/PhysicsContainer";
 import { Easing, Tween } from "tweedle.js";
 import { Keyboard } from "../utils/Keyboard";
 
-export class MySphere extends PhysicsContainer implements IHitbox {
+export class SphereMesh extends PhysicsContainer implements IHitbox {
 
     public static MODEL_SPEED = 0.1
 
@@ -50,14 +50,14 @@ export class MySphere extends PhysicsContainer implements IHitbox {
     public override update(_deltaMS: number) {
 
         if (Keyboard.state.get("ArrowRight")) {
-            this.myMesh.x += MySphere.MODEL_SPEED;
+            this.myMesh.x += SphereMesh.MODEL_SPEED;
         } else if (Keyboard.state.get("ArrowLeft")) {
-            this.myMesh.x -= MySphere.MODEL_SPEED;
+            this.myMesh.x -= SphereMesh.MODEL_SPEED;
         }
         if (Keyboard.state.get("ArrowDown")) {
-            this.myMesh.z += MySphere.MODEL_SPEED;
+            this.myMesh.z += SphereMesh.MODEL_SPEED;
         } else if (Keyboard.state.get("ArrowUp")) {
-            this.myMesh.z -= MySphere.MODEL_SPEED;
+            this.myMesh.z -= SphereMesh.MODEL_SPEED;
         }
         if (Keyboard.state.get("Space")) {
             this.jump();

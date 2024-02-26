@@ -2,7 +2,7 @@ import { Container, Graphics, Assets } from "pixi.js";
 import { manifest } from "../assets";
 import { IScene } from "./IScene";
 import { Manager } from "./Manager";
-import { Scene1 } from "../scenes/Scene1";
+import { Scene2_cave } from "../scenes/Scene2_cave";
 
 export class LoaderScene extends Container implements IScene {
 
@@ -39,7 +39,6 @@ export class LoaderScene extends Container implements IScene {
     }
 
 
-
     private async initializeLoader(): Promise<void> {
         await Assets.init({ manifest: manifest });
         const bundleIds = manifest.bundles.map(bundle => bundle.name);
@@ -47,18 +46,15 @@ export class LoaderScene extends Container implements IScene {
     }
 
 
-
     private downloadProgress(progressRatio: number): void {
         this.loaderBarFill.scale.x = progressRatio;
     }
 
 
-
     private gameLoaded(): void {
         // Change scene to the game scene!
-        Manager.changeScene(new Scene1);
+        Manager.changeScene(new Scene2_cave);
     }
-
 
 
     public update(_framesPassed: number): void {

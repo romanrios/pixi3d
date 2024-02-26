@@ -1,8 +1,8 @@
 import { Container, Renderer, Sprite, isMobile } from "pixi.js";
 import { IScene } from "../utils/IScene";
 import { Manager } from "../utils/Manager";
-import { MyModel } from "../game/MyModel";
-import { MySphere } from "../game/MySphere";
+import { TreeModel } from "../game/TreeModel";
+import { SphereMesh } from "../game/SphereMesh";
 import { TouchControl } from "../utils/TouchControl";
 import {
     CameraOrbitControl,
@@ -14,12 +14,12 @@ import {
     ShadowQuality
 } from "pixi3d/pixi7";
 
-export class Scene1 extends Container implements IScene {
+export class Scene1_tree extends Container implements IScene {
 
-    public player: MySphere;
+    public player: SphereMesh;
     private camera: CameraOrbitControl;
-    private myModel: MyModel;
-    private myModel2: MyModel;
+    private treeModel: TreeModel;
+    private treeModel2: TreeModel;
     private touchControl: any;
 
     constructor() {
@@ -58,20 +58,20 @@ export class Scene1 extends Container implements IScene {
         pipeline.enableShadows(ground, shadowCastingLight);
 
         // Models
-        this.myModel = new MyModel(shadowCastingLight);
-        this.myModel.x = 2;
-        this.myModel.z = -5;
-        this.addChild(this.myModel);
+        this.treeModel = new TreeModel(shadowCastingLight);
+        this.treeModel.x = 2;
+        this.treeModel.z = -5;
+        this.addChild(this.treeModel);
 
-        this.myModel2 = new MyModel(shadowCastingLight);
-        this.myModel2.x = -9;
-        this.myModel2.z = -5;
-        this.addChild(this.myModel2);
+        this.treeModel2 = new TreeModel(shadowCastingLight);
+        this.treeModel2.x = -9;
+        this.treeModel2.z = -5;
+        this.addChild(this.treeModel2);
 
 
 
         // Player (Sphere)
-        this.player = new MySphere();
+        this.player = new SphereMesh();
         this.addChild(this.player);
 
         // Camera
@@ -103,6 +103,7 @@ export class Scene1 extends Container implements IScene {
                 }
             }
         })
+
 
     }
 
